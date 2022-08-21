@@ -51,7 +51,9 @@ public class UserInterface {
 
                 case 4:
                     System.out.println("Current DVDs in the collection:\n");
-                    DVDLibrary.dispAllDVDs();
+                    for(int i = 0; i <DVDLibrary.getSize();i++){
+                        System.out.println(DVDLibrary.dvdToString(DVDLibrary.getDVD(i)));
+                    }
                     break;
 
                 case 5:

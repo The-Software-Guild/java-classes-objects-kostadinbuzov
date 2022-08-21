@@ -28,12 +28,7 @@ public class DVDLibrary {
     public static DVD getDVD(int dvdNum){
         return myCollection.get(dvdNum);
     }
-    public static void dispAllDVDs(){
-        for(DVD dvd: myCollection) {
 
-            System.out.println(dvdToString(dvd));
-        }
-    }
     public static int getSize(){
         return myCollection.size();
     }
