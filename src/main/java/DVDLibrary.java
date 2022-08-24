@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DVDLibrary {
-    public static List<DVD> myCollection = new ArrayList<>();
+    private static List<DVD> myCollection = new ArrayList<>();
 
     public static void addDVD(String title, String releaseDate, double MPAARating, String directorName, String studio, String userNote){
         myCollection.add(new DVD(title,releaseDate,MPAARating,directorName,studio,userNote));
@@ -36,7 +36,7 @@ public class DVDLibrary {
         try {
             Scanner fromFile = new Scanner(new BufferedReader(new FileReader("src/main/resources/DVDCollection.txt")));
             while (fromFile.hasNextLine()) {
-                String[] dvdAttributes = fromFile.nextLine().split(",");
+                String[] dvdAttributes = fromFile.nextLine().split("::");
                 myCollection.add(new DVD(dvdAttributes[0], dvdAttributes[1], Double.parseDouble(dvdAttributes[2]),dvdAttributes[3],dvdAttributes[4],dvdAttributes[5]));
             }
         }catch (FileNotFoundException ex){
@@ -59,11 +59,11 @@ public class DVDLibrary {
 
         }
         public static String dvdToString(DVD dvd){
-            String dvdInfo = dvd.getTitle() + "," +
-                    dvd.getReleaseDate() + "," +
-                    dvd.getMPAARating() + "," +
-                    dvd.getDirectorName() + "," +
-                    dvd.getStudio() + "," +
+            String dvdInfo = dvd.getTitle() + "::" +
+                    dvd.getReleaseDate() + "::" +
+                    dvd.getMPAARating() + "::" +
+                    dvd.getDirectorName() + "::" +
+                    dvd.getStudio() + "::" +
                     dvd.getUserNote();
             return dvdInfo;
         }
