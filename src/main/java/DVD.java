@@ -63,4 +63,17 @@ public class DVD {
     public void setUserNote(String userNote) {
         this.userNote = userNote;
     }
+
+    @Override
+    public String toString() {
+        return "DVD{" +
+                "title='" + title + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", MPAARating=" + MPAARating +
+                ", directorName='" + directorName + '\'' +
+                ", studio='" + studio + '\'' +
+                ", userNote='" + userNote + '\'' +
+                '}';
+    }
 }
+

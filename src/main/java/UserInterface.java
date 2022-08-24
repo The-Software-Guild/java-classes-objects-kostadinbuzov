@@ -5,24 +5,25 @@ public class UserInterface {
     public static void main(String[] args) {
         DVDLibrary.readFromFile();
         System.out.println("Welcome to your DVD Library!");
-        while(true){
+        while (true) {
             System.out.println("""
 
-                            Menu:
-                            1. Add a DVD to the collection
-                            2. Remove a DVD from the collection
-                            3. Edit existing DVD
-                            4. Display all DVDs in the collection
-                            5. Display a particular DVD by number
-                            6. Display a particular DVD by Title
-                            7. Exit the program
-                            """
-                                );
+                    Menu:
+                    1. Add a DVD to the collection
+                    2. Remove a DVD from the collection
+                    3. Edit existing DVD
+                    4. Display all DVDs in the collection
+                    5. Display a particular DVD by number
+                    6. Display a particular DVD by Title
+                    7. Exit the program
+                    """
+            );
             Scanner in = new Scanner(System.in);
             int userInput = 0;
             try {
                 userInput = Integer.parseInt(in.nextLine());
-            }catch (NumberFormatException ignored){}
+            } catch (NumberFormatException ignored) {
+            }
 
 
             switch (userInput) {
@@ -53,7 +54,7 @@ public class UserInterface {
                 case 4 -> {
                     System.out.println("Current DVDs in the collection:\n");
                     for (int i = 0; i < DVDLibrary.getSize(); i++) {
-                        System.out.println(DVDLibrary.dvdToString(DVDLibrary.getDVD(i)));
+                        System.out.println(DVDLibrary.getDVD(i).toString());
                     }
                 }
                 case 5 -> {
@@ -61,7 +62,7 @@ public class UserInterface {
                     try {
                         int dvdNumber = in.nextInt();
                         DVD dvdByNumber = DVDLibrary.getDVD(dvdNumber - 1);
-                        System.out.println("Your dvd info:\n" + DVDLibrary.dvdToString(dvdByNumber));
+                        System.out.println("Your dvd info:\n" + dvdByNumber.toString());
                     } catch (IndexOutOfBoundsException ex) {
                         System.out.println("There are " + DVDLibrary.getSize() + " DVDs in the collection.");
                     }
@@ -74,7 +75,7 @@ public class UserInterface {
                         DVD parseDVD = DVDLibrary.getDVD(i);
                         if (parseDVD.getTitle().equals(title)) {
                             dvdNum = i;
-                            System.out.println(DVDLibrary.dvdToString(parseDVD));
+                            System.out.println(parseDVD.toString());
                             break;
                         }
                     }
@@ -91,7 +92,8 @@ public class UserInterface {
         }
 
     }
-    public static String[] dvdElements(){
+
+    public static String[] dvdElements() {
         Scanner element = new Scanner(System.in);
         String[] dvdAttributes = new String[6];
         System.out.println("Enter Title: ");
